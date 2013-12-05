@@ -20,35 +20,35 @@ ActiveRecord::Schema.define(:version => 20131205003704) do
   end
 
   create_table "developers", :force => true do |t|
-    t.string   "name"
+    t.string   "name",            :null => false
     t.integer  "organization_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
 
   create_table "organizations", :force => true do |t|
-    t.string   "name"
+    t.string   "name",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "permission_developers", :force => true do |t|
-    t.integer  "permission_id", :null => false
-    t.integer  "developer_id",  :null => false
+    t.integer  "permission_id"
+    t.integer  "developer_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
 
   create_table "permission_organizations", :force => true do |t|
-    t.integer  "permission_id",   :null => false
-    t.integer  "organization_id", :null => false
+    t.integer  "permission_id"
+    t.integer  "organization_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
 
   create_table "permissions", :force => true do |t|
     t.string   "name",            :null => false
-    t.integer  "category_id",     :null => false
+    t.integer  "category_id"
     t.integer  "service_id"
     t.integer  "developer_id"
     t.integer  "organization_id"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(:version => 20131205003704) do
 
   create_table "services", :force => true do |t|
     t.string   "name",          :null => false
-    t.integer  "permission_id", :null => false
+    t.integer  "permission_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end

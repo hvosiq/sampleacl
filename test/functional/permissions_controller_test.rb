@@ -3,6 +3,7 @@ require 'test_helper'
 class PermissionsControllerTest < ActionController::TestCase
   setup do
     @permission = permissions(:one)
+    @permission.category = categories(:one)
   end
 
   test "should get index" do
@@ -18,13 +19,14 @@ class PermissionsControllerTest < ActionController::TestCase
 
   test "should create permission" do
     assert_difference('Permission.count') do
-      post :create, permission: { name: @permission.name }
+      post :create, permission: { name: @permission.name, category_id: @permission.category.id }
     end
 
     assert_redirected_to permission_path(assigns(:permission))
   end
 
   test "should show permission" do
+    @permission.save
     get :show, id: @permission
     assert_response :success
   end
@@ -35,7 +37,7 @@ class PermissionsControllerTest < ActionController::TestCase
   end
 
   test "should update permission" do
-    put :update, id: @permission, permission: { name: @permission.name }
+    put :update, id: @permission, permission: { name: @permission.name, category_id: @permission.category.id }
     assert_redirected_to permission_path(assigns(:permission))
   end
 

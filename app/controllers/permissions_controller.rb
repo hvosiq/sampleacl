@@ -40,7 +40,8 @@ class PermissionsController < ApplicationController
   # POST /permissions
   # POST /permissions.json
   def create
-    @permission = Permission.new(params[:permission])
+
+    @permission = Permission.new(name: params[:permission][:name], category: Category.find(params[:permission][:category_id]))
 
     respond_to do |format|
       if @permission.save
@@ -59,7 +60,8 @@ class PermissionsController < ApplicationController
     @permission = Permission.find(params[:id])
 
     respond_to do |format|
-      if @permission.update_attributes(params[:permission])
+      if @permission.update_attributes(name: params[:permission][:name], category: Category.find(params[:permission][:category_id]))
+
         format.html { redirect_to @permission, notice: 'Permission was successfully updated.' }
         format.json { head :no_content }
       else

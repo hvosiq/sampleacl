@@ -1,9 +1,16 @@
 <p id="notice"><%= notice %></p>
 
+
+<p>
+  <b>Category:</b>
+  <%= @permission.category.name %>
+</p>
+
 <p>
   <b>Name:</b>
   <%= @permission.name %>
 </p>
+
 
 
 <%= link_to 'Edit', edit_permission_path(@permission) %> |

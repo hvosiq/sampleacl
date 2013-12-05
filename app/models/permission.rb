@@ -1,5 +1,5 @@
 class Permission < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :category
 
   belongs_to :category
   belongs_to :service

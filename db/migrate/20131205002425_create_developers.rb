@@ -1,8 +1,8 @@
 class CreateDevelopers < ActiveRecord::Migration
   def change
     create_table :developers do |t|
-      t.string :name
-      t.integer :organization_id
+      t.string :name , null: false
+      t.belongs_to :organization
       t.timestamps
     end
   end
