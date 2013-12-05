@@ -8,6 +8,12 @@
 </head>
 <body>
 
+<div id="nav-bar">
+  <%= link_to 'Developers', developers_path %>
+  <%= link_to 'Organizations', organizations_path %>
+  &nbsp;&nbsp;|&nbsp;&nbsp;
+  <%= link_to 'Permissions', permissions_path %>
+</div>
 <%= yield %>
 
 </body>

@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :category %> :  <%= collection_select(:permission, :category_id, Category.all, :id, :name) %>
+    <%= f.label :category %> :  <%= f.select :category_id, Category.all.collect {|x| [x.name, x.id]}, {}%>
 
   </div>
 

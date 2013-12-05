@@ -40,6 +40,7 @@ class OrganizationsController < ApplicationController
   # POST /organizations
   # POST /organizations.json
   def create
+    #@organization = Organization.new(name: params[:organization][:name], developers: [Developer.find(params[:organization][:developer_ids])])
     @organization = Organization.new(params[:organization])
 
     respond_to do |format|
