@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Category</th>
     <th>Name</th>
     <th></th>
     <th></th>
@@ -10,6 +11,7 @@
 
 <% @permissions.each do |permission| %>
   <tr>
+    <td><%= permission.category.name %></td>
     <td><%= permission.name %></td>
     <td><%= link_to 'Show', permission %></td>
     <td><%= link_to 'Edit', edit_permission_path(permission) %></td>

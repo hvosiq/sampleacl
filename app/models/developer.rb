@@ -4,4 +4,10 @@ class Developer < ActiveRecord::Base
   belongs_to :organization
   has_many :permission_developers
   has_many :permissions, through: :permission_developers
+
+
+  #def accessPermissions
+  #  return organization.name
+  #
+  #end
 end

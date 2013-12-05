@@ -6,5 +6,10 @@
 </p>
 
 
+<p>
+  <b> Permissions: </b>
+  <%= @service.permissions.collect {|x| "#{x.category.name} - #{x.name}"} %>
+</p>
+
 <%= link_to 'Edit', edit_service_path(@service) %> |
 <%= link_to 'Back', services_path %>

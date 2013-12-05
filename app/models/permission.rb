@@ -1,8 +1,9 @@
 class Permission < ActiveRecord::Base
-  attr_accessible :name , :category_id
+  attr_accessible :name , :category_id ,:category
 
   belongs_to :category
-  belongs_to :service
+  has_many :permission_services
+  has_many :services, through: :permission_services
   has_many :permission_organizations
   has_many :permission_developers
   has_many :developers, through: :permission_developers
