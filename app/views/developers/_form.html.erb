@@ -15,6 +15,14 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+
+    <div class="field">
+      <%= f.label :organization %> :  <%= f.select :organization_id, Organization.all.collect {|x| [x.name, x.id]}, {} %>
+    </div>
+
+    <div class="field">
+      <%= f.label :permissions %> :  <%= f.select :permission_ids, Permission.all.collect {|x| ["#{x.category.name} - #{x.name}", x.id]}, {}, :multiple => true %>
+    </div>
   <div class="actions">
     <%= f.submit %>
   </div>

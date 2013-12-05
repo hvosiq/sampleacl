@@ -8,12 +8,12 @@
 
 <p>
   <b> Developers: </b>
-  <%= @organization.developers %>
+  <%= @organization.developers.collect{|x|x.name} %>
 </p>
 
 <p>
   <b> Permissions: </b>
-  <%= @organization.permissions %>
+  <%= @organization.permissions.collect {|x| "#{x.category.name} - #{x.name}"} %>
 </p>
 
 <%= link_to 'Edit', edit_organization_path(@organization) %> |
