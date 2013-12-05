@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131205002004) do
+ActiveRecord::Schema.define(:version => 20131205003704) do
 
   create_table "categories", :force => true do |t|
     t.string   "name",       :null => false
@@ -19,11 +19,41 @@ ActiveRecord::Schema.define(:version => 20131205002004) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "developers", :force => true do |t|
+    t.string   "name"
+    t.integer  "organization_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "organizations", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "permission_developers", :force => true do |t|
+    t.integer  "permission_id", :null => false
+    t.integer  "developer_id",  :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "permission_organizations", :force => true do |t|
+    t.integer  "permission_id",   :null => false
+    t.integer  "organization_id", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
   create_table "permissions", :force => true do |t|
-    t.string   "name",        :null => false
-    t.integer  "category_id", :null => false
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "name",            :null => false
+    t.integer  "category_id",     :null => false
+    t.integer  "service_id"
+    t.integer  "developer_id"
+    t.integer  "organization_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "services", :force => true do |t|
