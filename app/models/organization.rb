@@ -7,7 +7,8 @@ class Organization < ActiveRecord::Base
 
 
   def cumulative_permissions
-    permissions
+    restriction_ids
+    permissions.select{|per| !restriction_ids.include?per.id }
   end
 
   def categories

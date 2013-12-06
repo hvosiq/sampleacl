@@ -42,9 +42,9 @@ class PermissionsController < ApplicationController
   def create
 
     @permission = Permission.new( params[:permission])
-
+    @restriction = Restriction.new(permission:@permission)
     respond_to do |format|
-      if @permission.save
+      if @permission.save and @restriction.save
         format.html { redirect_to @permission, notice: 'Permission was successfully created.' }
         format.json { render json: @permission, status: :created, location: @permission }
       else

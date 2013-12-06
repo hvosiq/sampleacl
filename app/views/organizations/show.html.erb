@@ -12,15 +12,28 @@
 </p>
 
 <p>
-  <b> Permissions: </b>
-  <%= @organization.permissions %>
-</p>
-
-<p>
   <b> Restrictions: </b>
   <%= @organization.restrictions %>
 </p>
 
+<p>
+  <b> Permissions: </b>
+  <% @organization.permissions.each do |per| %>
+  <span
+  <% if @organization.restrictions.collect{|x|x.id}.include?(per.id)  %>
+          style="text-decoration:line-through"
+          <% end %>
+          > <%=per%></span> &nbsp;
+  <%end %>
+  <br><span style="color: gray; font-style:italic;font-size: 0.8em">Strike though = Permission was restricted</span>
+</p>
+
+
+
+<p>
+  <b> Cumulative Permissions: </b>
+  <%= @organization.cumulative_permissions %>
+</p>
 
 <p>
   <b>Services</b>

@@ -14,24 +14,38 @@
 <p>
   <b> Org Permissions: </b>
   <% @developer.organization.permissions.each do |per| %>
-  <span
-  <% if @developer.permissions.include?(per)  %>
-            style="text-decoration:line-through"
-      <% end %>
-      > <%=per%></span> &nbsp;
+  <span     style="
+    <% if @developer.permissions.include?(per)  %>
+            color: lightgray;
+    <% end %>
+    <% if @developer.organization.restrictions.collect{|x|x.id}.include?(per.id)  %>
+            text-decoration:line-through
+    <% end %>
+      "> <%=per%></span> &nbsp;
   <%end %>
+  <br><span style="color: gray; font-style:italic;font-size: 0.8em">Strike though = Permission was restricted</span>
+  <br><span style="color: gray; font-style:italic;font-size: 0.8em">Grayed out = Permission was overriden</span>
 </p>
 
-
-<p>
-  <b> My Permissions: </b>
-  <%= @developer.permissions %>
-</p>
 
 <p>
   <b> My Restrictions: </b>
   <%= @developer.restrictions %>
 </p>
+
+
+<p>
+  <b> My Permissions: </b>
+  <% @developer.permissions.each do |per| %>
+  <span
+          <% if @developer.restrictions.collect{|x|x.id}.include?(per.id)  %>
+          style="text-decoration:line-through"
+          <% end %>
+  > <%=per%></span> &nbsp;
+  <%end %>
+  <br><span style="color: gray; font-style:italic;font-size: 0.8em">Strike though = Permission was restricted</span>
+</p>
+
 
 
 

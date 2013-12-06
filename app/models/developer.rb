@@ -11,7 +11,7 @@ class Developer < ActiveRecord::Base
     cumulative_permissions.concat permissions
     cumulative_permissions.concat organization.cumulative_permissions
 
-    return cumulative_permissions.uniq
+    return cumulative_permissions.uniq.select{|per| !restriction_ids.include?per.id }
 
   end
 
