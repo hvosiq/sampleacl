@@ -2,8 +2,7 @@ class Developer < ActiveRecord::Base
   attr_accessible :name, :organization_id, :organization, :permission_ids, :permissions
 
   belongs_to :organization
-  has_many :permission_developers
-  has_many :permissions, through: :permission_developers
+  has_and_belongs_to_many :permissions
 
 
   def cumulative_permissions
