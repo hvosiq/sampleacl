@@ -9,17 +9,33 @@
 
 cat_realm = Category.create(name:'REALM')
 rs = Permission.create(name: "sandbox",category: cat_realm)
+rsc_rs = Restriction.create(permission: rs)
 rp = Permission.create(name: "production",category: cat_realm )
+rsc_rp = Restriction.create(permission: rp)
 
 cat_org_state = Category.create(name:'ORG STATE')
 op = Permission.create(name: "playground",category: cat_org_state)
+rsc_op = Restriction.create(permission: op)
+
 of = Permission.create(name: "full access",category: cat_org_state )
+rsc_of = Restriction.create(permission: of)
+
 oe = Permission.create(name: "enterprise",category: cat_org_state)
+rsc_oe = Restriction.create(permission: oe)
+
 
 cat_party = Category.create(name:'PARTY')
 pa = Permission.create(name: "att trusted",category: cat_party)
+rsc_pa = Restriction.create(permission: pa)
+
 pt = Permission.create(name: "trusted partners",category: cat_party )
+rsc_pt = Restriction.create(permission: pt)
+
 p3 = Permission.create(name: "3rd party developers",category: cat_party )
+rsc_p3 = Restriction.create(permission: p3)
+
+
+
 
 Service.create(name: "Enterprise Sandbox and Production", permissions: [oe, rs, rp])
 Service.create(name: "Enterprise Production Only", permissions: [oe, rp])

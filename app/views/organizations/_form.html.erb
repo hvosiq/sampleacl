@@ -24,6 +24,9 @@
       <%= f.label :permissions %> :  <%= f.select :permission_ids, Permission.all.collect {|x| ["#{x.category.name} - #{x.name}", x.id]}, {}, :multiple => true %>
     </div>
 
+    <div class="field">
+      <%= f.label :restrictions %> :  <%= f.select :restriction_ids, Restriction.all.collect {|x| ["#{x.category.name} - #{x.name}", x.id]}, {}, :multiple => true %>
+    </div>
   <div class="actions">
     <%= f.submit %>
   </div>

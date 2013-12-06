@@ -28,6 +28,10 @@
   <%= @developer.permissions %>
 </p>
 
+<p>
+  <b> My Restrictions: </b>
+  <%= @developer.restrictions %>
+</p>
 
 
 
@@ -36,6 +40,13 @@
   <%= @developer.cumulative_permissions %>
 
 </p>
+
+<p>
+  <b>Services</b>
+  <%= Service.services_for @developer %>
+
+</p>
+
 
 
 <%= link_to 'Edit', edit_developer_path(@developer) %> |

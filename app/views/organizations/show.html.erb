@@ -16,5 +16,17 @@
   <%= @organization.permissions %>
 </p>
 
+<p>
+  <b> Restrictions: </b>
+  <%= @organization.restrictions %>
+</p>
+
+
+<p>
+  <b>Services</b>
+  <%= Service.services_for @organization %>
+
+</p>
+
 <%= link_to 'Edit', edit_organization_path(@organization) %> |
 <%= link_to 'Back', organizations_path %>
