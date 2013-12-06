@@ -10,4 +10,12 @@ class Permission < ActiveRecord::Base
   has_many :organizations, through: :permission_organizations
 
   validates_presence_of :category, message: "Permission must have a category"
+
+  def to_s
+    "#{category.name} - #{name}"
+  end
+
+  def inspect
+    to_s
+  end
 end

@@ -24,3 +24,11 @@ p3 = Permission.create(name: "3rd party developers",category: cat_party )
 Service.create(name: "Enterprise Sandbox and Production", permissions: [oe, rs, rp])
 Service.create(name: "Enterprise Production Only", permissions: [oe, rp])
 Service.create(name: "Enterprise Sandbox Only", permissions: [oe, rs])
+
+
+org_ent = Organization.create(name:'Enterprise Org', permissions: [rs, rp, oe])
+org_play = Organization.create(name:'Playground Org', permissions: [rs, rp, op])
+org_full = Organization.create(name:'Full Access Org', permissions: [rs, rp, of])
+
+
+ent_dev = Developer.create(name: 'Trusted Dev', organization: org_ent)

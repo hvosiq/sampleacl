@@ -8,12 +8,35 @@
 
 <p>
   <b> Organization: </b>
-  <%= @developer.organization.name %>
+  <%= link_to @developer.organization.name, organization_path(@developer.organization) %>
 </p>
 
 <p>
-  <b> Permissions: </b>
-  <%= @developer.permissions.collect {|x| "#{x.category.name} - #{x.name}"} %>
+  <b> Org Permissions: </b>
+  <% @developer.organization.permissions.each do |per| %>
+  <span
+  <% if @developer.permissions.include?(per)  %>
+            style="text-decoration:line-through"
+      <% end %>
+      > <%=per%></span> &nbsp;
+  <%end %>
 </p>
+
+
+<p>
+  <b> My Permissions: </b>
+  <%= @developer.permissions %>
+</p>
+
+
+
+
+<p>
+  <b>Cumulative Permissions</b>
+  <%= @developer.cumulative_permissions %>
+
+</p>
+
+
 <%= link_to 'Edit', edit_developer_path(@developer) %> |
 <%= link_to 'Back', developers_path %>

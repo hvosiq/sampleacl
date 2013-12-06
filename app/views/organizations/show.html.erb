@@ -13,7 +13,7 @@
 
 <p>
   <b> Permissions: </b>
-  <%= @organization.permissions.collect {|x| "#{x.category.name} - #{x.name}"} %>
+  <%= @organization.permissions %>
 </p>
 
 <%= link_to 'Edit', edit_organization_path(@organization) %> |
