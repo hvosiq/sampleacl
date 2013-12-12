@@ -21,11 +21,26 @@
     </div>
 
     <div class="field">
-      <%= f.label :my_permissions %> :  <%= f.select :permission_ids, Permission.all.collect {|x| ["#{x.category.name} - #{x.name}", x.id]}, {}, :multiple => true %>
+      <%= f.label :my_permissions %>  :
+      <% Category.all.each do |category | %>
+          <div style="display:inline-block; text-align:center">
+            <%=category.name%><br/>
+            <%= f.select :permission_ids, category.permissions.collect {|x| ["#{x.category.name} - #{x.name}", x.id]}, {}, :multiple => true %>
+          </div>
+      <%end%>
+    </div>
+
     </div>
 
     <div class="field">
-      <%= f.label :my_restrictions %> :  <%= f.select :restriction_ids, Restriction.all.collect {|x| ["#{x.category.name} - #{x.name}", x.id]}, {}, :multiple => true %>
+      <%= f.label :my_restrictions %> :
+      <% Category.all.each do |category | %>
+          <div style="display:inline-block; text-align:center">
+            <%=category.name%><br/>
+            <%= f.select :restriction_ids, category.permissions.collect {|x| ["#{x.category.name} - #{x.restriction.name}", x.restriction.id]}, {}, :multiple => category.allow_multiple %>
+          </div>
+      <%end%>
+
     </div>
   <div class="actions">
     <%= f.submit %>
