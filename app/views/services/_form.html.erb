@@ -24,7 +24,7 @@
       <% Category.all.each do |category | %>
           <div style="display:inline-block; text-align:center">
             <%=category.name%><br/>
-            <%= f.select :permission_ids, category.permissions.collect {|x| ["#{x.category.name} - #{x.name}", x.id]}, {}, :multiple => true %>
+            <%= f.select :permission_ids, category.permissions.collect {|x| [x.name, x.id]}, {}, :multiple => true %>
           </div>
       <%end%>
       </div>

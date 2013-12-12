@@ -17,7 +17,7 @@
   </div>
 
   <div class="field">
-      <%= f.label :developers %> :  <%= f.select :developer_ids, Developer.all.collect {|x| [x.name, x.id]}, {}, :multiple => true %>
+      <%= f.label :developers %> :  <%= f.select :developer_ids, Developer.all.collect {|x| [x.name, x.id]}, {}, :multiple => category.allow_multiple %>
   </div>
 
     <div class="field">
@@ -25,7 +25,7 @@
         <% Category.all.each do |category | %>
             <div style="display:inline-block; text-align:center">
               <%=category.name%><br/>
-              <%= f.select :permission_ids, category.permissions.collect {|x| ["#{x.category.name} - #{x.name}", x.id]}, {}, :multiple => true %>
+              <%= f.select :permission_ids, category.permissions.collect {|x| [x.name, x.id]}, {}, :multiple => category.allow_multiple %>
             </div>
         <%end%>
       </div>
@@ -37,7 +37,7 @@
       <% Category.all.each do |category | %>
           <div style="display:inline-block; text-align:center">
             <%=category.name%><br/>
-            <%= f.select :restriction_ids, category.permissions.collect {|x| ["#{x.category.name} - #{x.restriction.name}", x.restriction.id]}, {}, :multiple => true %>
+            <%= f.select :restriction_ids, category.permissions.collect {|x| [x.name, x.restriction.id]}, {}, :multiple => true %>
           </div>
       <%end%>
 

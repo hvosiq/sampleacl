@@ -9,12 +9,15 @@
 <body>
 
 <div id="nav-bar">
+  <%= link_to 'Home', '/home/index' %>
+  &nbsp;&nbsp;|&nbsp;&nbsp;
   <%= link_to 'Developers', developers_path %>
   <%= link_to 'Organizations', organizations_path %>
   &nbsp;&nbsp;|&nbsp;&nbsp;
   <%= link_to 'Services', services_path %>
   &nbsp;&nbsp;|&nbsp;&nbsp;
   <%= link_to 'Permissions', permissions_path %>
+  <%= link_to 'Categories', categories_path %>
 </div>
 <%= yield %>
 

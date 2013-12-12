@@ -1,0 +1,39 @@
+<h1>ACL Summary</h1>
+
+<div style="width:38%;float:right">
+  <% Service.all.each do |service| %>
+      <div style="background-color: lightblue; margin: 10px 0px; padding: 5px">
+        <div class="service_tag"><%= service.name %> </div>     <br/>
+        <%= service.permissions %>
+      </div>
+  <% end %>
+</div>
+
+<div style="width:60%; float:left">
+
+  <% Organization.all.each do |org| %>
+    <fieldset>
+      <legend><%=link_to org.name, org %></legend>
+      Permission : <%= org.cumulative_permissions %> <br/>
+      Services:
+      <% Service.services_for(org).each do | service| %>
+          <div class="service_tag"><%=service.name%></div>
+      <% end %>
+      <% org.developers.each do |dev|%>
+        <div style="padding: 10px 10px 10px 20px; border: 1px solid gray; margin: 5px">
+           Name: <%= link_to dev.name, dev %>    <br/>
+           Permission : <%= dev.cumulative_permissions %> <br/>
+           Services:
+           <% Service.services_for(dev).each do | service| %>
+            <span class="service_tag"><%=service.name%></span>
+           <% end %>
+        </div>
+      <% end %>
+    </fieldset>
+  <% end %>
+</div>
+
+
+
+
+
