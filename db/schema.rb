@@ -14,9 +14,10 @@
 ActiveRecord::Schema.define(:version => 20131206181335) do
 
   create_table "categories", :force => true do |t|
-    t.string   "name",       :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "name",                             :null => false
+    t.boolean  "allow_multiple", :default => true
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
   create_table "developers", :force => true do |t|

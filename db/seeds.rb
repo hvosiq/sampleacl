@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-cat_realm = Category.create(name:'REALM')
+cat_realm = Category.create(name:'REALM', allow_multiple: true)
 rs = Permission.create(name: "sandbox",category: cat_realm)
 rsc_rs = Restriction.create(permission: rs)
 rp = Permission.create(name: "production",category: cat_realm )
